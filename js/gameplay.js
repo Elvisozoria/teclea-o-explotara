@@ -10,8 +10,10 @@ bomb.src = '../assets/bomb.png';
 var bombX = 310;
 var bombY = 10;
 
-var bombWeight = 40; 
+var bombWeight = 100; 
 
+var text = "hello world!";
+var textDisplay = document.getElementById('textDisplay');
 
 // adds event listener for keys
 window.onkeydown = function(e) { keyDown(e) };
@@ -30,7 +32,6 @@ background.onload = function(){
 }
 // ciclo de dibujar
 function drawAll(){
-  console.log("iniciando ciclo de dibujar");
     context.drawImage(background, 0, 0);
     context.drawImage(bomb, bombX, bombY, 40, 80);
 }
@@ -41,8 +42,15 @@ function drawAll(){
 
 // reconocer eventos del teclado
 function keyDown(e){
-  bombY -= 40;
-  console.log(bombY);
+  console.log(e.key);
+  letter = text[0];
+  if (e.key == letter){
+    console.log("Correct!");
+    text = text.substring(1);
+    textDisplay.innerHTML = text;
+    bombY -= 40;
+    console.log(bombY);
+  }
 }
 
 // movimiento de la bomba
